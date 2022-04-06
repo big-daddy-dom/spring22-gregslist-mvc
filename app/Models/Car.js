@@ -1,24 +1,34 @@
-import { generateId } from "../Utils/generateId.js"
+import { generateId } from "../Utils/generateId.js";
 
 export class Car {
-  constructor({ id = generateId(), make, model, year, mileage, color, img, price, description }) {
+  constructor({
+    id = generateId(),
+    make,
+    model,
+    year,
+    mileage,
+    color,
+    img,
+    price,
+    description,
+  }) {
     // handle out conditions first
     if (!make || !model || !price) {
-      throw new Error('You can\'t add a car without a make model and price')
+      throw new Error("You can't add a car without a make model and price");
     }
     // handle out conditions first
     if (price <= 0) {
-      throw new Error('Where my money')
+      throw new Error("Where my money");
     }
-    this.id = id
-    this.make = make
-    this.model = model
-    this.description = description || ''
-    this.price = price
-    this.year = year || ''
-    this.mileage = mileage || ''
-    this.color = color || ''
-    this.img = img || ''
+    this.id = id;
+    this.make = make;
+    this.model = model;
+    this.description = description || "";
+    this.price = price;
+    this.year = year || "";
+    this.mileage = mileage || "";
+    this.color = color || "";
+    this.img = img || "";
   }
 
   get CardTemplate() {
@@ -39,8 +49,6 @@ export class Car {
           <i class="mdi mdi-delete selectable" onclick="app.carsController.removeCar('${this.id}')"></i>
         </div>
       </div>
-    </div>`
+    </div>`;
   }
-
-
 }
