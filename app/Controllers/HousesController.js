@@ -1,45 +1,58 @@
 import { ProxyState } from "../AppState.js";
 import { getHouseForm } from "../components/HouseForm.js";
-
+import { housesService } from "../Services/HousesService.js";
+import { Pop } from "../Utils/Pop.js";
 
 function _drawHouses() {
-  let houseCardsTemplate = 'TODO'
-  document.getElementById('listings').innerHTML = `
+  let houseCardsTemplate = '';
+  document.getElementById("listings").innerHTML = `
     <div class="row houses">
       ${houseCardsTemplate}
     </div>
   `
 
-  document.getElementById('listing-modal-form-slot').innerHTML = getHouseForm()
-  document.getElementById('add-listing-modal-label').innerText = 'Add House 🏠'
+  document.getElementById("listing-modal-form-slot").innerHTML = getHouseForm();
+  document.getElementById("add-listing-modal-label").innerText = "Add House 🏠";
 }
 
 export class HousesController {
   //  Do I want to do anything on page load?
   constructor() {
-    ProxyState.on('houses', _drawHouses)
+    ProxyState.on("houses", _drawHouses);
   }
 
   addHouse() {
     // DO THIS like always
     try {
-      event.preventDefault()
-      debugger
-      const formElem = event.target
+      event.preventDefault();
+      /**@type {HTMLFormElement} */
+      //@ts-ignore
+      const formElem = event.target;
       const formData = {
-        // TODO YOUR JOB NOT MINE
+        sqfootage: formElem.sqfootage.value,
+        rooms: formElem.rooms.value,
+        price: formElem.price.value,
+        color: formElem.color.value,
+        yearbuilt: formElem.yearbuilt.value,
+        description: formElem.description.value,
+        img: formElem.img.value,
       }
-      console.log({ formData })
+      housesService.addHouse(formData);
+      formElem.reset()
+      // @ts-ignore
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('add-listing-modal')).hide()
 
+      console.log(this.addHouse);
+      
     } catch (error) {
-      // show this to the user
+      console.error("[ADD_HOUSE_FORM_ERROR]", error);
+      Pop.toast(error.message, "error");
     }
   }
-
   drawHouses() {
-    _drawHouses()
-    // REVIEW [epic=Mark] How could we refactor this? 
+    _drawHouses();
+    // REVIEW [epic=Mark] How could we refactor this?
     // @ts-ignore
-    // bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('sidenav')).hide()
+    bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('sidenav')).hide()
   }
 }

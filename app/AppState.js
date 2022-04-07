@@ -4,8 +4,19 @@ import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
-  /**@type {import ('./Models/House.js').House[]} */
-  houses = [ ]
+
+  /**@type {import ('./Models/House').House[]} */
+  houses = [
+    new House({
+      color: 'blue',
+      description: 'hiyo',
+      img: 'https://upload.wikimedia.org/wikipedia/en/0/08/TromeoJulietPoster.jpg',
+      rooms: '4',
+      sqfootage: '8900',
+      yearbuilt: '1970',
+      price: 1900
+    })
+  ]
 
   /** @type {import('./Models/Car').Car[]} */
   cars = [

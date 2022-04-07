@@ -1,23 +1,23 @@
 export function getHouseForm() {
   return /*html*/ `
-  <form onsubmit="app.carsController.addCar()">
+  <form onsubmit="app.housesController.addHouse()">
     <div class="mb-3 d-flex justify-content-between">
       <div>
         <label for="rooms" class="form-label">Rooms</label>
         <input type="text" class="form-control" name="rooms" id="rooms" aria-describedby="make"
-          placeholder="Make..." required>
+          placeholder="Rooms..." required>
       </div>
       <div>
-        <label for="model" class="form-label">Model</label>
-        <input type="text" class="form-control" name="model" id="model" aria-describedby="model"
-          placeholder="Model..." required>
+        <label for="sqfootage" class="form-label">Square Feet</label>
+        <input type="text" class="form-control" name="sqfootage" id="sqfootage" aria-describedby="sqfootage"
+          placeholder="Square Feet..." required>
       </div>
     </div>
     <div class="mb-3 d-flex justify-content-between">
       <div>
-        <label for="year" class="form-label">Year</label>
-        <input type="number" class="form-control" name="year" id="year" aria-describedby="year"
-          placeholder="Year..." min="1950" max="2022" required>
+        <label for="yearbuilt" class="form-label">Year Built</label>
+        <input type="number" class="form-control" name="yearbuilt" id="yearbuilt" aria-describedby="yearbuilt"
+          placeholder="Year Built..." min="1950" max="2022" required>
       </div>
       <div>
         <label for="color" class="form-label">Color</label>
@@ -43,9 +43,10 @@ export function getHouseForm() {
           aria-describedby="description" placeholder="Description..." min="5" max="250" required> </textarea>
       </div>
     </div>
+    
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       <button type="submit" class="btn btn-primary">Create</button>
     </div>
-  </form>`
+  </form>`;
 }

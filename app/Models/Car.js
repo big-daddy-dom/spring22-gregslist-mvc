@@ -32,7 +32,7 @@ export class Car {
   }
 
   get CardTemplate() {
-    return `
+    return /*html*/ `
     <div class="car col-md-4 p-4">
       <div class="bg-white shadow rounded">
         <img class="w-100 rounded-top" src="${this.img}" alt="${this.model}-image">
@@ -49,6 +49,6 @@ export class Car {
           <i class="mdi mdi-delete selectable" onclick="app.carsController.removeCar('${this.id}')"></i>
         </div>
       </div>
-    </div>`;
+    </div>`
   }
 }
