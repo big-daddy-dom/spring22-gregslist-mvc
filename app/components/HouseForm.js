@@ -1,4 +1,4 @@
-export function getHouseForm() {
+export function getHouseform() {
   return /*html*/ `
   <form onsubmit="app.housesController.addHouse()">
     <div class="mb-3 d-flex justify-content-between">
